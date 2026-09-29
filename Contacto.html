@@ -16,7 +16,7 @@
     <a class="nav-link active" aria-current="page" href="Inicio.html">Inicio</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="servicios.html">Servicios</a>
+    <a class="nav-link" href="MiCuenta.html">Mi Cuenta</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="contacto.html">Contacto</a>
@@ -29,6 +29,58 @@
     </li>
   
 </ul>
+
+
+
+<form action="#" method="POST">
+        <h2>Contacto</h2>
+        
+        
+        <div class="form-group">
+            <label for="motivo">Motivo de contacto:</label>
+            <select id="motivo" name="motivo" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="baño">Baño de mascotas</option>
+                <option value="consultas">Consultas</option>
+                <option value="exoticos">Animales exóticos</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+
+        <div class="form-group">
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" required>
+        </div>
+
+        <div class="form-group">
+            <label for="tipo_mascota">Tipo de mascotas:</label>
+            <input type="text" id="tipo_mascota" name="tipo_mascota" placeholder="Ej: Perro, Gato, Reptil..." required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="comentarios">Comentarios:</label>
+            <textarea id="comentarios" name="comentarios" rows="4" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+
+
+
+
+<footer>
+            <p>&copy; 2023 Veterinaria Patitas. Todos los derechos reservados.</p>
+        </footer>
+
     
 </body>
 </html>
