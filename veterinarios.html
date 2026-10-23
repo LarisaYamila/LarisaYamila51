@@ -10,7 +10,7 @@
 </head>
 <body>
  <header>
-        <h1>Veterinaria Patitas</h1>
+        <h1>Veterinaria La Mary</h1>
 
     
 </header>
@@ -31,14 +31,14 @@
     <li class="nav-item">
         <a class="nav-link" href="profesionales.html">Profesionales</a>
     </li>
-
+</ul>
 
 
 
 
    <section class="container vh-100 d-flex justify-content-center align-items-center">
   <article class="col-12 col-md-6">
-    <form class="d-flex flex-column gap-3" id="formPaciente">
+    <form class="d-flex flex-column gap-3" id="formVeterinario">
       <h3 class="text-center">Dar de alta Veterinario</h3>
 
 <div>
@@ -55,7 +55,7 @@
 </div>
 <div>
   <label for="ValorConsulta" class="form-label">Valor de la Consulta:</label>
-  <input type="number" id="ValorConsulta" class="form-control" required>
+  <input type="number" id="ValorConsulta" step="0.01" class="form-control" required>
 </div>
 <div class="d-grid gap-2 col-6 mx-auto">
   <button class="btn btn-primary" type="submit">Guardar</button>
@@ -63,11 +63,14 @@
 
 </div>
       </form>
-
+<h2 class="badge text-bg-primary">Veterinarios Registrados
+<span class="badge text-bg-secondary"id="Veterinarios"> 0 </span>
+</h2>
 <div class="table-responsive- md">
 <table class="table">
   <thead>
     <tr>
+      <th>ID</th>
       <th>Nombre</th>
       <th>Matrícula</th>
       <th>Especialidad</th>
@@ -95,10 +98,9 @@
 
 
 
-        <footer>
-            <p>&copy; 2026 Veterinaria Patitas. Todos los derechos reservados.</p>
-        </footer>
-
+<footer>
+    <p class="text-center mt-5">&copy; 2026 Veterinaria La Mary. Todos los derechos reservados.</p>
+  </footer>
 </body>
 </html>
     
