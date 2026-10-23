@@ -10,18 +10,26 @@ body {
     padding: 0;
 }
 
-
-header h1 {
-    font-weight: 700;
-    color: #2c3e50;
-    justify-content: space-around;
-    text-align: center;
-    margin: 20px 0;
-    background-color: #d1ecf1;
-
-
+header {
+  position: relative;
+  background-color: #9ee8f5;
+  padding: 1rem;
 }
 
+
+header h1 {
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+  margin: 0;
+}
+
+
+header a.btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
 
 .carousel-caption h5 {
     color: #000000 !important;
@@ -50,7 +58,11 @@ main {
     gap: 15px;
     margin-top: 20px;         
 }
-
+#conteiner {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
 
 footer {
     text-align: center;

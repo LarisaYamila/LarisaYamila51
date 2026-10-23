@@ -1,4 +1,4 @@
-
+/*
 const pacientes = [
     {
         tipoMascota: "PequeñOS animales",
@@ -31,24 +31,60 @@ const pacientes = [
         Edad: 2,
         Peso: 15,
     }
-];
-const listaPacientes = document.getElementById("lista-pacientes");
-const pacientesInternados = document.getElementById("PacientesInternados"); // corregido id
+];*/
+
+const pacientes = JSON.parse(localStorage.getItem('pacientes')) || [];
+
+// Apuntamos al tbody de la tabla en el HTML
+const cuerpoTabla = document.getElementById("cuerpo-tabla");
+const pacientesInternados = document.getElementById("PacientesInternados"); 
+const formulario = document.getElementById("formPaciente");
 
 function mostrarPacientes() {
-  pacientes.forEach((paciente) => {
-    listaPacientes.innerHTML += `
-      <li class="list-group-item">
-        ${paciente.tipoMascota} - ${paciente.Nombre} - ${paciente.NombreDueno || paciente.duenio?.NombreDuenio || ""}
-      </li>`;
-  });
+    cuerpoTabla.innerHTML = '';
 
-  pacientesInternados.textContent = `Total: ${pacientes.length}`;
+    pacientes.forEach((paciente) => {
+        const duenio = paciente.NombreDueno;
+
+        cuerpoTabla.innerHTML += `
+            <tr>
+                <td>${paciente.IdMascota}</td>
+                <td>${paciente.Nombre}</td>
+                <td>${paciente.tipoMascota}</td>
+                <td>${duenio}</td>
+                <td>${paciente.Color}</td>
+                <td>${paciente.Edad}</td>
+                <td>${paciente.Peso}</td>
+            </tr>
+        `;
+    });
+
+    pacientesInternados.textContent = pacientes.length;
+    // (Ya quitamos la llamada infinita de aquí adentro)
 }
 
+function guardarLocalStorage() {
+    localStorage.setItem('pacientes', JSON.stringify(pacientes));
+}
+
+formulario.addEventListener('submit', (evento) => {
+    evento.preventDefault();
+
+    const nuevoPaciente = {
+        IdMascota: crypto.randomUUID().slice(0, 8), // Cortamos el UUID para que sea más corto y prolijo
+        tipoMascota: document.getElementById('altaMascota').value,
+        Nombre: document.getElementById('nombreMascota').value.trim(), // Agregado .value
+        NombreDueno: document.getElementById('nombreDuenio').value.trim(), // Agregado .value
+        Color: document.getElementById('color').value,
+        Edad: document.getElementById('edad').value,
+        Peso: parseFloat(document.getElementById('peso').value)
+    };
+
+    pacientes.push(nuevoPaciente);
+    guardarLocalStorage();
+    mostrarPacientes();
+    formulario.reset();
+});
+
+// Ejecutamos la función una sola vez al cargar la página para pintar lo que haya en el LocalStorage
 mostrarPacientes();
-
-
-
-
-
