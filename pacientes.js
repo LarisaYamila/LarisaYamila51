@@ -33,15 +33,15 @@ const pacientes = [
     }
 ];*/
 
-// Recuperar pacientes desde LocalStorage
+
 const pacientes = JSON.parse(localStorage.getItem('pacientes')) || [];
 
-// Referencias a elementos del DOM
+
 const cuerpoTabla = document.getElementById("cuerpo-tabla");
 const pacientesInternados = document.getElementById("PacientesInternados"); 
 const formulario = document.getElementById("formPaciente");
 
-// Mostrar pacientes en la tabla
+
 function mostrarPacientes() {
     cuerpoTabla.innerHTML = '';
 
@@ -65,26 +65,26 @@ function mostrarPacientes() {
         `;
     });
 
-    // Actualizar contador
+    
     pacientesInternados.textContent = pacientes.length;
 
-    // Activar botones eliminar
+    
     document.querySelectorAll(".btn-eliminar").forEach(btn => {
         btn.addEventListener("click", () => eliminarPaciente(btn.dataset.id));
     });
 
-    // Activar botones editar
+    
     document.querySelectorAll(".btn-editar").forEach(btn => {
         btn.addEventListener("click", () => editarPaciente(btn.dataset.id));
     });
 }
 
-// Guardar en LocalStorage
+
 function guardarLocalStorage() {
     localStorage.setItem('pacientes', JSON.stringify(pacientes));
 }
 
-// Función para eliminar paciente
+
 function eliminarPaciente(id) {
     const index = pacientes.findIndex(p => p.IdMascota === id);
     if (index !== -1) {
@@ -96,11 +96,11 @@ function eliminarPaciente(id) {
     }
 }
 
-// Función para editar paciente
+
 function editarPaciente(id) {
     const paciente = pacientes.find(p => p.IdMascota === id);
     if (paciente) {
-        // Cargar datos en el formulario
+        
         document.getElementById('altaMascota').value = paciente.tipoMascota;
         document.getElementById('nombreMascota').value = paciente.Nombre;
         document.getElementById('nombreDuenio').value = paciente.NombreDueno;
@@ -108,12 +108,12 @@ function editarPaciente(id) {
         document.getElementById('edad').value = paciente.Edad;
         document.getElementById('peso').value = paciente.Peso;
 
-        // Eliminar el paciente viejo para reemplazarlo al guardar
+        
         eliminarPaciente(id);
     }
 }
 
-// Evento submit del formulario
+
 formulario.addEventListener('submit', (evento) => {
     evento.preventDefault();
 
@@ -133,5 +133,5 @@ formulario.addEventListener('submit', (evento) => {
     formulario.reset();
 });
 
-// Inicializar tabla al cargar
+
 mostrarPacientes();
