@@ -1,5 +1,5 @@
 
-let veterinarios = JSON.parse(localStorage.getItem('veterinarios')) || [];
+const veterinarios = JSON.parse(localStorage.getItem('veterinarios')) || [];
 let idEditando = null; 
 
 const cuerpoTabla = document.getElementById('cuerpo-tabla');
