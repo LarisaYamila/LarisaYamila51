@@ -33,12 +33,14 @@ const pacientes = [
     }
 ];*/
 
+
 const pacientes = JSON.parse(localStorage.getItem('pacientes')) || [];
 
-// Apuntamos al tbody de la tabla en el HTML
+
 const cuerpoTabla = document.getElementById("cuerpo-tabla");
 const pacientesInternados = document.getElementById("PacientesInternados"); 
 const formulario = document.getElementById("formPaciente");
+
 
 function mostrarPacientes() {
     cuerpoTabla.innerHTML = '';
@@ -55,26 +57,71 @@ function mostrarPacientes() {
                 <td>${paciente.Color}</td>
                 <td>${paciente.Edad}</td>
                 <td>${paciente.Peso}</td>
+                <td>
+                    <button class="btn btn-warning btn-sm btn-editar" data-id="${paciente.IdMascota}" type="button">Editar</button>
+                    <button class="btn btn-danger btn-sm btn-eliminar" data-id="${paciente.IdMascota}" type="button">Eliminar</button>
+                </td>
             </tr>
         `;
     });
 
+    
     pacientesInternados.textContent = pacientes.length;
-    // (Ya quitamos la llamada infinita de aquí adentro)
+
+    
+    document.querySelectorAll(".btn-eliminar").forEach(btn => {
+        btn.addEventListener("click", () => eliminarPaciente(btn.dataset.id));
+    });
+
+    
+    document.querySelectorAll(".btn-editar").forEach(btn => {
+        btn.addEventListener("click", () => editarPaciente(btn.dataset.id));
+    });
 }
+
 
 function guardarLocalStorage() {
     localStorage.setItem('pacientes', JSON.stringify(pacientes));
 }
 
+
+function eliminarPaciente(id) {
+    const index = pacientes.findIndex(p => p.IdMascota === id);
+    if (index !== -1) {
+        if (confirm("¿Seguro que deseas eliminar este paciente?")) {
+            pacientes.splice(index, 1);
+            guardarLocalStorage();
+            mostrarPacientes();
+        }
+    }
+}
+
+
+function editarPaciente(id) {
+    const paciente = pacientes.find(p => p.IdMascota === id);
+    if (paciente) {
+        
+        document.getElementById('altaMascota').value = paciente.tipoMascota;
+        document.getElementById('nombreMascota').value = paciente.Nombre;
+        document.getElementById('nombreDuenio').value = paciente.NombreDueno;
+        document.getElementById('color').value = paciente.Color;
+        document.getElementById('edad').value = paciente.Edad;
+        document.getElementById('peso').value = paciente.Peso;
+
+        
+        eliminarPaciente(id);
+    }
+}
+
+
 formulario.addEventListener('submit', (evento) => {
     evento.preventDefault();
 
     const nuevoPaciente = {
-        IdMascota: crypto.randomUUID().slice(0, 8), // Cortamos el UUID para que sea más corto y prolijo
+        IdMascota: crypto.randomUUID().slice(0, 8), 
         tipoMascota: document.getElementById('altaMascota').value,
-        Nombre: document.getElementById('nombreMascota').value.trim(), // Agregado .value
-        NombreDueno: document.getElementById('nombreDuenio').value.trim(), // Agregado .value
+        Nombre: document.getElementById('nombreMascota').value.trim(), 
+        NombreDueno: document.getElementById('nombreDuenio').value.trim(), 
         Color: document.getElementById('color').value,
         Edad: document.getElementById('edad').value,
         Peso: parseFloat(document.getElementById('peso').value)
@@ -86,5 +133,5 @@ formulario.addEventListener('submit', (evento) => {
     formulario.reset();
 });
 
-// Ejecutamos la función una sola vez al cargar la página para pintar lo que haya en el LocalStorage
+
 mostrarPacientes();
