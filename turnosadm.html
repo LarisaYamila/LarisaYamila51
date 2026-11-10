@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Turnos solicitados</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="estilos.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script defer src="sesion.js"></script>
+  <script defer src="admin.js"></script>
+  <script defer src="turnosadm.js"></script>
+</head>
+<body class="d-flex flex-column min-vh-100">
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+      <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center" href="Inicio.html">
+          <img src="laMary.jpg" alt="Logo" width="50" height="50" class="me-2">
+          <span>Veterinaria La Mary</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav" aria-controls="menuNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+           <li class="nav-item"><a class="nav-link active" href="Inicio.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="MiCuenta.html">Mi Cuenta</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          <li class="nav-item"><a class="nav-link" href="institucional.html">Institucional</a></li>
+          <li class="nav-item"><a class="nav-link" href="profesionales.html">Profesionales</a></li>
+        
+
+
+
+            <li><button class="btn btn-secondary" onclick="cerrarSesion()">Cerrar Sesión</button></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container mt-4">
+    <h2>Turnos solicitados</h2>
+
+    <div class="row g-3 mb-3 align-items-end">
+      <div class="col-md-4">
+        <label for="filtroEstado" class="form-label">Filtrar por estado</label>
+        <select class="form-select" id="filtroEstado">
+          <option value="">Todos</option>
+          <option value="pendiente">Pendientes</option>
+          <option value="confirmado">Confirmados</option>
+          <option value="cancelado">Cancelados</option>
+        </select>
+      </div>
+      <div class="col-md-8">
+        <span class="badge text-bg-warning me-2">Pendientes: <span id="contadorPendientes">0</span></span>
+        <span class="badge text-bg-success me-2">Confirmados: <span id="contadorConfirmados">0</span></span>
+        <span class="badge text-bg-secondary">Cancelados: <span id="contadorCancelados">0</span></span>
+      </div>
+    </div>
+<div class="table-responsive">
+  <table class="table table-striped align-middle">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Veterinario</th>
+        <th>Solicitante</th>
+        <th>Dueño</th>
+        <th>Mascota</th>
+        <th>Especie</th>
+        <th>Motivo</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="tablaTurnos"></tbody>
+  </table>
+</div>
+    
+    <p id="sinTurnos" class="text-muted d-none">No hay turnos para mostrar.</p>
+  </main>
+
+  <footer>
+    <p class="text-center mt-5">&copy; 2026 Veterinaria La Mary. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>

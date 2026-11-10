@@ -1,4 +1,4 @@
-
+ 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 
@@ -32,15 +32,40 @@ main {
     max-width: 1000px;
     margin: 0 auto;
 }
+    form.bg-light,
+.card {
+    border-radius: 12px;
+}
+
+.form-label {
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.form-control,
+.form-select {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #0dcaf0;
+    box-shadow: 0 0 0 0.2rem rgba(13, 202, 240, 0.25);
+}
+
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+}
 
 .form-group {
-    padding: 10px 5px;
-    margin-bottom: 15px; 
-    display: flex;            
-    
-    gap: 15px;
-    margin-top: 20px;         
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
+
 #conteiner {
     padding: 20px;
     max-width: 1000px;
@@ -64,4 +89,5 @@ footer {
         flex-direction: column;
         align-items: flex-start;              
     }
+
 }

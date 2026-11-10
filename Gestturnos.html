@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Turnos</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="estilos.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script defer src="sesion.js"></script>
+<script defer src="gestturno.js"></script>
+  
+</head>
+<body class="d-flex flex-column min-vh-100">
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+    <div class="container-fluid">
+
+  
+      <a class="navbar-brand d-flex align-items-center" href="Inicio.html">
+  <img src="laMary.jpg" alt="Logo" width="50" height="50" class="me-2">
+  <span>Veterinaria La Mary</span>
+</a>
+
+
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav" aria-controls="menuNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      
+      <div class="collapse navbar-collapse" id="menuNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="Inicio.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="MiCuenta.html">Mi Cuenta</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          <li class="nav-item"><a class="nav-link" href="institucional.html">Institucional</a></li>
+          <li class="nav-item"><a class="nav-link" href="profesionales.html">Profesionales</a></li>
+        
+      
+
+        <li> <button  class="btn btn-secondary" onclick="cerrarSesion()" id="administracion">Cerrar Sesión</button> </li>
+
+        
+        </ul>
+
+      
+        
+      </div>
+    </div>
+  </nav>
+
+  </header>
+
+  <main class="container mt-4">
+    <h2>Solicitar turno</h2>
+
+    <form id="formTurno" class="row g-3 mb-4">
+      <div class="col-md-6">
+        <label for="dueno" class="form-label">Nombre del dueño</label>
+        <input type="text" class="form-control" id="dueno" required>
+      </div>
+      <div class="col-md-6">
+        <label for="mascota" class="form-label">Nombre de la mascota</label>
+        <input type="text" class="form-control" id="mascota" required>
+      </div>
+      <div class="col-md-4">
+        <label for="especie" class="form-label">Especie</label>
+        <select class="form-select" id="especie" required>
+          <option value="">Seleccionar...</option>
+          <option>Perro</option>
+          <option>Gato</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="vete" class="form-label">veterinarios</label>
+        <select class="form-select" id="vete" required>
+          <option value="">Seleccionar...</option>
+          <option>Dra. Sofia Perez</option>
+          <option>Dr. Juan Gomez</option>
+          <option>Dr. Carlos Benitez</option>
+          <option>Dra. Laura Acuña</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="fecha" class="form-label">Fecha</label>
+        <input type="date" class="form-control" id="fecha" required>
+      </div>
+      <div class="col-md-4">
+        <label for="hora" class="form-label">Hora</label>
+        <select class="form-select" id="hora" required>
+          <option value="">Seleccionar...</option>
+        </select>
+      </div>
+      <div class="col-12">
+        <label for="motivo" class="form-label">Motivo de la consulta</label>
+        <textarea class="form-control" id="motivo" rows="2" required></textarea>
+      </div>
+      <div class="col-12">
+        <span id="mensaje" class="d-block mb-2"></span>
+        <button type="submit" class="btn btn-primary">Solicitar turno</button>
+      </div>
+    </form>
+
+    <h3>Turnos solicitados</h3>
+    <div class="table-responsive">
+      <table class="table table-striped align-middle">
+        <thead>
+          <tr>
+            <th>Fecha</th><th>Hora</th><th>Dueño</th> <th>veterinario</th> <th>Mascota</th>
+            <th>Especie</th><th>Motivo</th><th></th>
+          </tr>
+        </thead>
+        <tbody id="tablaTurnos"></tbody>
+      </table>
+    </div>
+    <p id="sinTurnos" class="text-muted d-none">Todavía no hay turnos cargados.</p>
+  </main>
+
+  <footer>
+    <p class="text-center mt-5">&copy; 2026 Veterinaria La Mary. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
