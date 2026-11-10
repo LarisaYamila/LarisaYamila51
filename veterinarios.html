@@ -6,7 +6,8 @@
     <title>alta veterinarios</title>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="estilos.css">
-    <script type="module" src="veterinarios.js"></script>    
+     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="veterinarios.js"></script>    
 </head>
 <body>
  <header>
@@ -37,7 +38,7 @@
         </ul>
 
       
-        <a href="administracion.html" class="btn btn-primary">Administración</a>
+        <a href="formAdmin.html" class="btn btn-primary">Administración</a>
       </div>
     </div>
   </nav>
@@ -90,6 +91,7 @@
       <th>Matrícula</th>
       <th>Especialidad</th>
       <th>Valor de la Consulta</th>
+      <th>Acciones</th>
     </tr>
   </thead>
   <tbody id="cuerpo-tabla">
@@ -116,7 +118,42 @@
 <footer>
     <p class="text-center mt-5">&copy; 2026 Veterinaria La Mary. Todos los derechos reservados.</p>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<div class="modal fade" id="modalEditar" tabindex="-1">
+    <div class="modal-dialog">
+      <form class="modal-content" id="formEditar">
+        <div class="modal-header">
+          <h5 class="modal-title">Editar Veterinario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body d-flex flex-column gap-3">
+          <div>
+            <label for="editNombre" class="form-label">Nombre:</label>
+            <input type="text" id="editNombre" class="form-control" required>
+          </div>
+          <div>
+            <label for="editMatricula" class="form-label">Matrícula:</label>
+            <input type="text" id="editMatricula" class="form-control" required>
+          </div>
+          <div>
+            <label for="editEspecialidad" class="form-label">Especialidad:</label>
+            <input type="text" id="editEspecialidad" class="form-control" required>
+          </div>
+          <div>
+            <label for="editValorConsulta" class="form-label">Valor de la Consulta:</label>
+            <input type="number" id="editValorConsulta" step="0.01" class="form-control" required>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </div>
+      </form>
+    </div>
+  </div>
+ 
 </body>
 </html>
     

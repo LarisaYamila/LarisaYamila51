@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Historia Clínica</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="estilos.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script defer src="sesion.js"></script>
+  <script defer src="administracion.js"></script>
+  <script defer src="historia.js"></script>
+</head>
+<body class="d-flex flex-column min-vh-100">
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+      <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center" href="Inicio.html">
+          <img src="laMary.jpg" alt="Logo" width="50" height="50" class="me-2">
+          <span>Veterinaria La Mary</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav" aria-controls="menuNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+           
+
+          <li class="nav-item"><a class="nav-link active" href="Inicio.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="MiCuenta.html">Mi Cuenta</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          <li class="nav-item"><a class="nav-link" href="institucional.html">Institucional</a></li>
+          <li class="nav-item"><a class="nav-link" href="profesionales.html">Profesionales</a></li>
+        
+
+            <li><button class="btn btn-secondary" onclick="cerrarSesion()">Cerrar Sesión</button></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container mt-4">
+    <h2>Historia Clínica</h2>
+
+    <div id="avisoDatos" class="alert alert-warning d-none"></div>
+
+    <!-- Formulario de registro -->
+    <form id="formHistoria" class="row g-3 mb-5">
+      <input type="text" class="form-control" id="paciente" list="listaPacientes"
+       placeholder="Escribí o elegí un paciente" autocomplete="off" required>
+<datalist id="listaPacientes"></datalist>
+      <div class="col-md-4">
+        <label for="veterinario" class="form-label">Veterinario</label>
+        <select class="form-select" id="veterinario" required>
+          <option value="">Seleccionar...</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <label for="fecha" class="form-label">Fecha</label>
+        <input type="date" class="form-control" id="fecha" required>
+      </div>
+      <div class="col-md-2">
+        <label for="peso" class="form-label">Peso (kg)</label>
+        <input type="number" step="0.1" min="0" class="form-control" id="peso">
+      </div>
+      <div class="col-12">
+        <label for="motivo" class="form-label">Motivo de la consulta</label>
+        <textarea class="form-control" id="motivo" rows="2" required></textarea>
+      </div>
+      <div class="col-md-6">
+        <label for="diagnostico" class="form-label">Diagnóstico</label>
+        <textarea class="form-control" id="diagnostico" rows="2" required></textarea>
+      </div>
+      <div class="col-md-6">
+        <label for="tratamiento" class="form-label">Tratamiento / Medicación</label>
+        <textarea class="form-control" id="tratamiento" rows="2" required></textarea>
+      </div>
+      <div class="col-12">
+        <label for="observaciones" class="form-label">Observaciones</label>
+        <textarea class="form-control" id="observaciones" rows="2"></textarea>
+      </div>
+      <div class="col-12">
+        <span id="mensaje" class="d-block mb-2"></span>
+        <button type="submit" class="btn btn-primary">Guardar consulta</button>
+      </div>
+    </form>
+
+    <!-- Consulta del historial -->
+    <h3>Consultar historial</h3>
+    <div class="row g-3 mb-3">
+      <div class="col-md-6">
+        <select class="form-select" id="filtroPaciente">
+          <option value="">Todos los pacientes</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-striped align-middle">
+        <thead>
+          <tr>
+            <th>Fecha</th><th>Paciente</th><th>Veterinario</th><th>Motivo</th>
+            <th>Diagnóstico</th><th>Tratamiento</th><th>Peso</th><th></th>
+          </tr>
+        </thead>
+        <tbody id="tablaHistoria"></tbody>
+      </table>
+    </div>
+    <p id="sinRegistros" class="text-muted d-none">No hay consultas registradas.</p>
+  </main>
+
+  <footer>
+    <p class="text-center mt-5">&copy; 2026 Veterinaria La Mary. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
