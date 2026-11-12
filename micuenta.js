@@ -1,12 +1,15 @@
 
 const LOGIN_URL = "https://dummyjson.com/auth/login";
-const ID_MIN = 4;   // primer usuario con rol usuario
-const ID_MAX = 8;   // último usuario con rol usuario
+const ID_MIN = 4;   
+const ID_MAX = 8;   
+ 
 const DESTINO = "turnos.html";   
 
 const form = document.getElementById("loginForm");
+
 const mensajeError = document.getElementById("errorMessage");
 const botonIniciarSesion = document.getElementById("btnform");
+
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();

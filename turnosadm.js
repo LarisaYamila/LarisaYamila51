@@ -7,7 +7,7 @@ const spanPendientes = document.getElementById("contadorPendientes");
 const spanConfirmados = document.getElementById("contadorConfirmados");
 const spanCancelados = document.getElementById("contadorCancelados");
 
-// --- Almacenamiento ---
+
 function obtenerTurnos() {
   try {
     return JSON.parse(localStorage.getItem(CLAVE_TURNOS)) || [];
@@ -123,6 +123,7 @@ tabla.addEventListener("click", (event) => {
     }
   }
 });
+
 
 
 mostrarTurnosAdmin();

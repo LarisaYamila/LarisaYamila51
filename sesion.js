@@ -1,5 +1,4 @@
 
-
 function obtenerToken() {
   return sessionStorage.getItem("token");
 }

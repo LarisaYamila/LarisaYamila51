@@ -1,5 +1,5 @@
 const CLAVE_TURNOS = "turnos";
-const CLAVE_USUARIO = "usuario";
+const CLAVE_USUARIO = "usuario"; 
 
 const HORARIOS = ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
                   "16:00", "16:30", "17:00", "17:30", "18:00", "18:30"];
@@ -18,8 +18,7 @@ function obtenerTurnos() {
   } catch {
     return [];
   }
-}
-
+} 
 function guardarTurnos(turnos) {
   localStorage.setItem(CLAVE_TURNOS, JSON.stringify(turnos));
 }
@@ -118,13 +117,13 @@ form.addEventListener("submit", (event) => {
     dueno: document.getElementById("dueno").value.trim(),
     mascota: document.getElementById("mascota").value.trim(),
     especie: document.getElementById("especie").value,
-    vete: document.getElementById("vete").value, // Captura correcta del select de veterinario
+    vete: document.getElementById("vete").value, 
     fecha: inputFecha.value,
     hora: selectHora.value,
     motivo: document.getElementById("motivo").value.trim(),
   };
 
-  // Verificación por si el horario se ocupó mientras tanto
+  
   const repetido = obtenerTurnos().some(
     t => t.fecha === turno.fecha && t.hora === turno.hora && estadoDe(t) !== "cancelado"
   );
